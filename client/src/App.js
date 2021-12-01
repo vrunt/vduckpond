@@ -2,13 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const POLL_MINS = 1;
+
 function App() {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-        fetch('api')
-        .then((res) => res.json())
-        .then((data) => setData(data.message));
+        const fetchTime= () => {
+            fetch('api')
+                .then((res) => res.json())
+                .then((data) => setData(data.message));
+        }
+
+        fetchTime();
+        const interval = setInterval(() => {
+            fetchTime();
+                    }, POLL_MINS * (60 * 1000));
+        return () => clearInterval(interval);
     }, []);
 
     return (

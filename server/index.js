@@ -8,7 +8,9 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 //handle get requests to /api
 app.get('/api', (req, res) => {
-    res.json({ message: "message from server" });
+    let dateNow = new Date();
+    res.json({ message: `it is now ${dateNow.toTimeString().substring(0,5)}` });
+    console.log(`time requested - ${dateNow.toTimeString()}`);
 });
 
 //all other reqests return React app
