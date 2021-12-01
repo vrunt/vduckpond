@@ -23,6 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+/server/.env
+/client.env
+
 /client/node_modules
 /client/build
 
