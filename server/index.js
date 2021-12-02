@@ -8,7 +8,7 @@ const api = require('./router');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const mongo = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// const mongo = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 //const collection = mongo.db('vduckpond').collection('ducks');
 
 //serve React app
