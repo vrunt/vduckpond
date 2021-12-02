@@ -3,6 +3,8 @@ const express = require('express');
 const {MongoClient} = require('mongodb');
 require('dotenv').config();
 
+const api = require('./router');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -12,12 +14,8 @@ const mongo = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, 
 //serve React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-//handle get requests to /api
-app.get('/api', (req, res) => {
-    let dateNow = new Date();
-    res.json({ message: `it is now ${dateNow.toTimeString().substring(0,5)}` });
-    console.log(`time requested - ${dateNow.toTimeString()}`);
-});
+//use router.js for API requests
+app.use('/api', api);
 
 //all other reqests return React app
 app.get('*', (req, res) => {
