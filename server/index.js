@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const server = http.createServer(app);
-const io = socketio(server, { cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] } });
+const io = socketio(server, { cors: { methods: ['GET', 'POST'] } });
 
 io.on('connection', (socket) => {
     console.log(`new client connected`);
