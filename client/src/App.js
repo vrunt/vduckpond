@@ -2,7 +2,9 @@ import React from 'react';
 import socketIOClient from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
-const ENDPOINT = 'http://127.0.0.1:3001';
+
+const ENDPOINT = 'https://vduckpond.herokuapp.com/';
+const ENDPOINT_FALLBACK = 'http://127.0.0.1:3001';
 
 const POLL_MINS = 1;
 
@@ -11,7 +13,11 @@ function App() {
 
     React.useEffect(() => {
 
-        const socket = socketIOClient(ENDPOINT);
+        let trysocket = socketIOClient(ENDPOINT);
+        if (!this.trysocket){
+            trysocket = socketIOClient(ENDPOINT_FALLBACK);
+        }
+        const socket = trysocket;
         socket.on('message', data => {
             console.log(data);
         });
