@@ -13,7 +13,7 @@ const app = express();
 
 const server = http.createServer(app);
 const io = socketio(server, { cors: {
-    origins: ['http://vduckpond.herokuapp.com', 'http://localhost:3000']
+    origins: ['http://vduckpond.herokuapp.com', 'http://localhost:3000'],
     methods: ['GET', 'POST']
 } });
 
