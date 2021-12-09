@@ -14,7 +14,7 @@ function App() {
     React.useEffect(() => {
 
         let trysocket = socketIOClient(ENDPOINT);
-        if (!this.trysocket){
+        if (!trysocket){
             trysocket = socketIOClient(ENDPOINT_FALLBACK);
         }
         const socket = trysocket;
