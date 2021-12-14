@@ -3,8 +3,8 @@ import socketIOClient from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
 
-const ENDPOINT = 'https://vduckpond.herokuapp.com/';
-const ENDPOINT_FALLBACK = 'http://127.0.0.1:3001';
+const ENDPOINT_FALLBACK = 'https://vduckpond.herokuapp.com/';
+const ENDPOINT = 'http://127.0.0.1:3001';
 
 const POLL_MINS = 1;
 
