@@ -10,6 +10,7 @@ const POLL_MINS = 1;
 
 function App() {
     const [data, setData] = React.useState(null);
+    const [visitorCount, setVisitorCount] = React.useState(0);
 
     React.useEffect(() => {
 
@@ -21,6 +22,9 @@ function App() {
         socket.on('message', data => {
             console.log(data);
         });
+        socket.on('visitors', data => {
+            setVisitorCount(data);
+        })
 
         const fetchTime= () => {
             fetch('api')
@@ -40,6 +44,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>{!data ? "Loading..." : data}</p>
+                <p>{!visitorCount ? "Loading..." : visitorCount}</p>
             </header>
         </div>
     );

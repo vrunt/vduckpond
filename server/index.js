@@ -17,10 +17,16 @@ const io = socketio(server, { cors: {
     methods: ['GET', 'POST']
 } });
 
+let numVisitors = 0;
+
 io.on('connection', (socket) => {
     console.log(`new client connected`);
+    numVisitors++;
+    io.emit('visitors', `${numVisitors} at the pond`)
     socket.on('disconnect', () => {
         console.log(`client disconnected`);
+        numVisitors--;
+    io.emit('visitors', `${numVisitors} at the pond`)
     })
 })
 
